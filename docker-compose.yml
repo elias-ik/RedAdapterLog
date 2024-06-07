@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  red_tester_log:
+    image: red_tester_log
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - caddy
+    environment:
+      - STORE_PATH=/data
+    volumes:
+      - red_tester_log_volume:/data
+    labels:
+      caddy: red-tester-log-s1.elias.dev
+      caddy.reverse_proxy: "{{upstreams 8080}}"
+
+volumes:
+  red_tester_log_volume:
+
+
+networks:
+  caddy:
+    external: true
+    
+

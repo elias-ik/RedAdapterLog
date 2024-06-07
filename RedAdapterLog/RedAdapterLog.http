@@ -1,0 +1,6 @@
+@RedAdapterLog_HostAddress = http://localhost:5216
+
+GET {{RedAdapterLog_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
