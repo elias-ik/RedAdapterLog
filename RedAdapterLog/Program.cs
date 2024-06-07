@@ -66,10 +66,10 @@ app.MapGet("/list-urls", ([FromQuery] string apiKey) =>
 .WithName("List All Files As Urls")
 .WithOpenApi();
 
-app.MapGet("/delete", ([FromQuery] string apiKey) =>
+app.MapGet("/delete", ([FromQuery] string apiKey, [FromQuery] string file) =>
 {
     if(apiKey != realApiKey) return "Invalid API Key";
-    File.Delete(path ?? "");
+    File.Delete((path ?? "") + file);
     return "Deleted";
 })
 .WithName("Delete File")
