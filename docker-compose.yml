@@ -10,6 +10,7 @@ services:
       - caddy
     environment:
       - STORE_PATH=/app/data
+      - APIKEY=${APIKEY}
     volumes:
       - red_tester_log_volume:/app/data
     labels:
