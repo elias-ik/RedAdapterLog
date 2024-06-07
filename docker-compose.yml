@@ -13,7 +13,7 @@ services:
     volumes:
       - red_tester_log_volume:/data
     labels:
-      caddy: red-tester-log-s1.elias.dev
+      caddy: red-tester-log.s1.elias.dev
       caddy.reverse_proxy: "{{upstreams 8080}}"
 
 volumes:
