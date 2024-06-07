@@ -51,7 +51,7 @@ app.MapGet("/read", ([FromQuery]string apiKey, [FromQuery] string file) =>
 app.MapGet("/list", ([FromQuery] string apiKey) =>
 {
     if(apiKey != realApiKey) return "Invalid API Key";
-    return string.Join(Environment.NewLine, Directory.GetFiles(path ?? ""));
+    return string.Join(Environment.NewLine, Directory.GetFiles(path ?? "").Select(x => x.Replace(path ?? "", "")););
 })
 .WithName("List All Files")
 .WithOpenApi();
@@ -59,8 +59,8 @@ app.MapGet("/list", ([FromQuery] string apiKey) =>
 app.MapGet("/list-urls", ([FromQuery] string apiKey) =>
 {
     if(apiKey != realApiKey) return "Invalid API Key";
-    var files = Directory.GetFiles(path ?? "");
-    var urls = files.Select(x => $"https://red-tester-log.s1.elias.dev/read?apiKey=${realApiKey}&file=${x}");
+    var files = Directory.GetFiles(path ?? "").Select(x => x.Replace(path ?? "", ""));
+    var urls = files.Select(x => $"https://red-tester-log.s1.elias.dev/read?apiKey={realApiKey}&file={x}");
     return string.Join(Environment.NewLine, urls);
 })
 .WithName("List All Files As Urls")
