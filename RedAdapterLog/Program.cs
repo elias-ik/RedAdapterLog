@@ -51,7 +51,7 @@ app.MapGet("/read", ([FromQuery]string apiKey, [FromQuery] string file) =>
 app.MapGet("/list", ([FromQuery] string apiKey) =>
 {
     if(apiKey != realApiKey) return "Invalid API Key";
-    return string.Join(Environment.NewLine, Directory.GetFiles(path ?? "").Select(x => x.Replace(path ?? "", "")););
+    return string.Join(Environment.NewLine, Directory.GetFiles(path ?? "").Select(x => x.Replace(path ?? "", "")));
 })
 .WithName("List All Files")
 .WithOpenApi();
