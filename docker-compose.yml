@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   red_tester_log:
-    image: red_tester_log
+    container_name: red_tester_log
     build:
       context: .
       dockerfile: Dockerfile
