@@ -9,9 +9,9 @@ services:
     networks:
       - caddy
     environment:
-      - STORE_PATH=/var/store
+      - STORE_PATH=/app/data
     volumes:
-      - red_tester_log_volume:/var/store
+      - red_tester_log_volume:/app/data
     labels:
       caddy: red-tester-log.s1.elias.dev
       caddy.reverse_proxy: "{{upstreams 8080}}"
