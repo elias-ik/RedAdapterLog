@@ -16,6 +16,7 @@ app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 var path = Environment.GetEnvironmentVariable("STORE_PATH");
+path = path != null ? path + "/" : null;
 app.MapGet("/log", ([FromQuery]string apiKey,[FromQuery] string file, [FromQuery] string log) =>
 {
     if(apiKey != "yeahbuddy") return "Invalid API Key";
